@@ -1,69 +1,84 @@
-import { NavLink } from 'react-router-dom';
-import { Styled } from './styled';
-import { IoMenu } from "react-icons/io5";
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState } from "react";
+import { IoClose, IoMenu } from "react-icons/io5";
+import { NavLink, useLocation } from "react-router-dom";
+import { Styled } from "./styled";
+
+const navigationItems = [
+    { label: "Home", to: "/" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+];
 
 const Header = () => {
-    const [isDropdownActive, setIsDropdownActive] = useState(false);
-    const dropdownRef = useRef(null); // for outside click
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
 
-    const handleBreadcrumbsClick = () => {
-        setIsDropdownActive(prev => !prev);
-    };
-
-    // Outside click detection
+    // Close the mobile drawer after navigation and when the Escape key is pressed.
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setIsDropdownActive(false);
+        setIsMenuOpen(false);
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const closeOnEscape = (event) => {
+            if (event.key === "Escape") {
+                setIsMenuOpen(false);
             }
         };
 
-        if (isDropdownActive) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isDropdownActive]);
-
-    // Handle click on any dropdown link
-    const handleDropdownLinkClick = () => {
-        setIsDropdownActive(false);
-    };
+        window.addEventListener("keydown", closeOnEscape);
+        return () => window.removeEventListener("keydown", closeOnEscape);
+    }, []);
 
     return (
-        <>
-            <Styled.Wrapper>
-                <Styled.Name>
-                    <NavLink to="/">
-                        Ashish Ranjan
-                    </NavLink>
-                </Styled.Name>
+        <Styled.Header>
+            <Styled.Inner>
+                <Styled.Brand to="/" aria-label="Basic React Router App home">
+                    <Styled.BrandMark>AR</Styled.BrandMark>
+                    <span>React Router</span>
+                </Styled.Brand>
 
-                <Styled.NavlinksBreadcrumbs>
-                    <Styled.NavlinksWrapper>
-                        <NavLink to="/">Home</NavLink>
-                        <NavLink to="/about">About</NavLink>
-                        <NavLink to="/contact">Contact</NavLink>
-                    </Styled.NavlinksWrapper>
-                    <Styled.BreadcrumbsWrapper onClick={handleBreadcrumbsClick}>
-                        <IoMenu size={20} className='breadcrumbsIcon' />
-                    </Styled.BreadcrumbsWrapper>
-                </Styled.NavlinksBreadcrumbs>
-            </Styled.Wrapper>
+                <Styled.DesktopNav aria-label="Primary navigation">
+                    {navigationItems.map((item) => (
+                        <Styled.NavigationLink key={item.to} to={item.to} end={item.to === "/"}>
+                            {item.label}
+                        </Styled.NavigationLink>
+                    ))}
+                </Styled.DesktopNav>
 
-            {isDropdownActive && (
-                <Styled.TopNavbarWrapper ref={dropdownRef}>
-                    <NavLink to="/" onClick={handleDropdownLinkClick}>Home</NavLink>
-                    <NavLink to="/about" onClick={handleDropdownLinkClick}>About</NavLink>
-                    <NavLink to="/contact" onClick={handleDropdownLinkClick}>Contact</NavLink>
-                </Styled.TopNavbarWrapper>
+                <Styled.MenuButton
+                    type="button"
+                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="mobile-navigation"
+                    onClick={() => setIsMenuOpen((previous) => !previous)}
+                >
+                    {isMenuOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+                </Styled.MenuButton>
+            </Styled.Inner>
+
+            {isMenuOpen && (
+                <Styled.MobileLayer>
+                    <Styled.Backdrop
+                        type="button"
+                        aria-label="Close navigation menu"
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+                    <Styled.MobileNav id="mobile-navigation" aria-label="Mobile navigation">
+                        <Styled.MenuLabel>Navigation</Styled.MenuLabel>
+                        {navigationItems.map((item) => (
+                            <Styled.NavigationLink
+                                key={item.to}
+                                to={item.to}
+                                end={item.to === "/"}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {item.label}
+                            </Styled.NavigationLink>
+                        ))}
+                    </Styled.MobileNav>
+                </Styled.MobileLayer>
             )}
-        </>
+        </Styled.Header>
     );
 };
 

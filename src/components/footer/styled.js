@@ -1,57 +1,57 @@
 import styled from "styled-components";
 
 export const Styled = {
-    Wrapper: styled.footer`
-        background-color: #000;
-        padding: 15px;
-        display: flex;
-        gap: 30px;
-        align-items: flex-start;
-        justify-content: space-between;
+    Footer: styled.footer`
+        border-top: 1px solid #193550;
+        background: rgba(4, 11, 20, 0.78);
+    `,
 
-        @media (width<700px) {
-            padding: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+    Inner: styled.div`
+        width: min(1120px, calc(100% - 40px));
+        min-height: 84px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+
+        @media (max-width: 640px) {
+            width: min(100% - 32px, 1120px);
+            padding: 20px 0;
+            align-items: flex-start;
+            flex-direction: column;
         }
     `,
 
-    Copyright: styled.div`
+    Copy: styled.div`
         display: flex;
-        gap: 15px;
         flex-wrap: wrap;
-        text-align: center;
-        justify-content: center;
+        gap: 8px 16px;
+        color: #93a6bc;
+        font-size: 0.82rem;
 
         a {
-            color: #aaa;
+            color: #b9dfff;
             text-decoration: none;
 
             &:hover {
+                color: #ffffff;
                 text-decoration: underline;
             }
         }
     `,
 
-    CopyrightYear: styled.div``,
-
-    NameAllRightsReserved: styled.div``,
-
-    Legal: styled.div`
+    Links: styled.nav`
         display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 16px;
 
         a {
-            white-space: nowrap;
-
-            color: #aaa;
+            color: #aebed1;
+            font-size: 0.85rem;
             text-decoration: none;
 
             &:hover {
-                text-decoration: underline;
+                color: #ffffff;
             }
         }
     `,

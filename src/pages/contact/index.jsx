@@ -1,19 +1,38 @@
-import React from 'react'
-import styled from 'styled-components'
+import { FiArrowUpRight, FiMail } from "react-icons/fi";
+import {
+    BodyText,
+    Eyebrow,
+    Lead,
+    Page,
+    SectionTitle,
+    Surface,
+    TextLink,
+    Title,
+} from "../../components/PageContent";
 
-const Contact = () => {
-    return (
-        <Styled>Contact</Styled>
-    )
-}
+const Contact = () => (
+    <Page>
+        <header>
+            <Eyebrow>Contact</Eyebrow>
+            <Title>Let&apos;s connect.</Title>
+            <Lead>
+                This starter intentionally has no contact form or data storage. Use the direct links below if you would like to reach Ashish Ranjan.
+            </Lead>
+        </header>
 
-export default Contact
+        <Surface>
+            <SectionTitle>Contact links</SectionTitle>
+            <BodyText>
+                For project discussions or professional enquiries, email is the most direct option.
+            </BodyText>
+            <TextLink href="mailto:ash.ranjan09@gmail.com">
+                <FiMail aria-hidden="true" /> ash.ranjan09@gmail.com
+            </TextLink>
+            <TextLink href="https://www.ashishranjan.net/" target="_blank" rel="noreferrer">
+                Visit portfolio <FiArrowUpRight aria-hidden="true" />
+            </TextLink>
+        </Surface>
+    </Page>
+);
 
-const Styled = styled.div`
-    min-height: 100vh;
-    padding: 16vh 50px;
-
-    @media (width<500px) {
-        padding: 16vh 15px;
-    }
-`;
+export default Contact;

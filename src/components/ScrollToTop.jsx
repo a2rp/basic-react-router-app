@@ -4,8 +4,9 @@ import { useLocation } from "react-router-dom";
 const ScrollToTop = () => {
     const { pathname } = useLocation();
 
+    // Reset the reading position whenever the router displays a new page.
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" }); // or behavior: "auto"
+        window.scrollTo({ top: 0, behavior: "auto" });
     }, [pathname]);
 
     return null;

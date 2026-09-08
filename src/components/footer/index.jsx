@@ -1,23 +1,26 @@
-import { NavLink } from 'react-router-dom';
-import { Styled } from './styled';
+import { NavLink } from "react-router-dom";
+import { Styled } from "./styled";
 
-const Contact = () => {
-    return (
-        <Styled.Wrapper>
-            <Styled.Copyright>
-                <Styled.CopyrightYear>&copy; {new Date().getFullYear()} <a href="https://www.ashishranjan.net">Ashish Ranjan</a></Styled.CopyrightYear>
-                <Styled.NameAllRightsReserved>
-                    All rights reserved.
-                </Styled.NameAllRightsReserved>
-            </Styled.Copyright>
+const Footer = () => (
+    <Styled.Footer>
+        <Styled.Inner>
+            <Styled.Copy>
+                &copy; {new Date().getFullYear()}{" "}
+                <a
+                    href="https://www.ashishranjan.net/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Ashish Ranjan
+                </a>
+                <span>Built with React Router.</span>
+            </Styled.Copy>
+            <Styled.Links aria-label="Legal navigation">
+                <NavLink to="/privacy-policy">Privacy</NavLink>
+                <NavLink to="/terms-of-service">Terms</NavLink>
+            </Styled.Links>
+        </Styled.Inner>
+    </Styled.Footer>
+);
 
-            <Styled.Legal>
-                <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-                <NavLink to="/terms-of-service">Terms of Service</NavLink>
-            </Styled.Legal>
-        </Styled.Wrapper>
-    )
-}
-
-export default Contact
-
+export default Footer;

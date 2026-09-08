@@ -1,25 +1,18 @@
-import React from 'react'
-import Header from './components/header'
-import Footer from './components/footer'
-import styled from 'styled-components'
-import AppRoutes from './appRoutes'
-import ScrollToTop from './components/ScrollToTop'
+import AppRoutes from "./appRoutes";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import ScrollToTop from "./components/ScrollToTop";
+import { AppFrame, Main } from "./components/layout";
 
-const App = () => {
-    return (
-        <>
-            <Header />
-            <Main>
-                <ScrollToTop />
-                <AppRoutes />
-            </Main>
-            <Footer />
-        </>
-    )
-}
+const App = () => (
+    <AppFrame>
+        <ScrollToTop />
+        <Header />
+        <Main>
+            <AppRoutes />
+        </Main>
+        <Footer />
+    </AppFrame>
+);
 
-export default App
-
-const Main = styled.main`
-    min-height: 100vh;
-`;
+export default App;
