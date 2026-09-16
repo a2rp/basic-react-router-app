@@ -78,7 +78,6 @@ src/
 
 - This is a static frontend demo. It has no database, authentication, analytics integration, or contact-form submission.
 - The Contact page uses direct email and portfolio links only.
-- See [Documentation.md](./Documentation.md) for implementation details.
 
 ## Author
 
