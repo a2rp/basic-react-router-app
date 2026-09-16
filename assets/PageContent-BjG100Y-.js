@@ -1,4 +1,4 @@
-import{d as e}from"./index-Fii19Q_R.js";const o=e.section`
+import{d as e}from"./index-zCxoyWS1.js";const o=e.section`
     display: grid;
     gap: 32px;
 `,r=e.p`
