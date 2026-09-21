@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { createElement, useEffect, useState } from "react";
+import { FiHome, FiInfo, FiMail } from "react-icons/fi";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router-dom";
 import { Styled } from "./styled";
 
 const navigationItems = [
-    { label: "Home", to: "/" },
-    { label: "About", to: "/about" },
-    { label: "Contact", to: "/contact" },
+    { label: "Home", to: "/", icon: FiHome },
+    { label: "About", to: "/about", icon: FiInfo },
+    { label: "Contact", to: "/contact", icon: FiMail },
 ];
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const location = useLocation();
 
     // Close the mobile drawer after navigation and when the Escape key is pressed.
@@ -29,17 +31,42 @@ const Header = () => {
         return () => window.removeEventListener("keydown", closeOnEscape);
     }, []);
 
+    useEffect(() => {
+        let previousScrollY = window.scrollY;
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setIsVisible(currentScrollY <= 0 || currentScrollY < previousScrollY);
+            previousScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = isMenuOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isMenuOpen]);
+
     return (
-        <Styled.Header>
+        <Styled.Header className={isVisible ? "" : "hidden"}>
             <Styled.Inner>
                 <Styled.Brand to="/" aria-label="Basic React Router App home">
-                    <Styled.BrandMark>AR</Styled.BrandMark>
-                    <span>React Router</span>
+                    <Styled.BrandMark>
+                        <img
+                            src={`${import.meta.env.BASE_URL}logo.png`}
+                            alt="Ashish Ranjan logo"
+                        />
+                    </Styled.BrandMark>
+                    <span>Basic React Router App</span>
                 </Styled.Brand>
 
                 <Styled.DesktopNav aria-label="Primary navigation">
                     {navigationItems.map((item) => (
                         <Styled.NavigationLink key={item.to} to={item.to} end={item.to === "/"}>
+                            {createElement(item.icon, { "aria-hidden": "true" })}
                             {item.label}
                         </Styled.NavigationLink>
                     ))}
@@ -72,6 +99,7 @@ const Header = () => {
                                 end={item.to === "/"}
                                 onClick={() => setIsMenuOpen(false)}
                             >
+                                {createElement(item.icon, { "aria-hidden": "true" })}
                                 {item.label}
                             </Styled.NavigationLink>
                         ))}

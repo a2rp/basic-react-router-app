@@ -38,6 +38,55 @@ export const Surface = styled.section`
     border-radius: 20px;
     background: rgba(13, 31, 50, 0.76);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+
+    &.featureSurface {
+        .featureHeader {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(220px, 0.72fr);
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 28px;
+        }
+
+        .featureCopy {
+            min-width: 0;
+        }
+
+        .featureImage {
+            width: 100%;
+            aspect-ratio: 1.35;
+            border: 1px solid #285173;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+        }
+
+        .starterLinks {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 22px;
+
+            span {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                color: #9fb0c4;
+                font-size: 0.88rem;
+            }
+
+            span svg {
+                color: #7dc4ff;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .featureHeader {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
 `;
 
 export const SectionTitle = styled.h2`
@@ -70,6 +119,12 @@ export const Card = styled.article`
     border: 1px solid #1c3855;
     border-radius: 16px;
     background: rgba(7, 17, 31, 0.64);
+    transition: box-shadow 0.18s ease, text-shadow 0.18s ease;
+
+    &:hover {
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+        text-shadow: 0 0 10px rgba(141, 209, 255, 0.48);
+    }
 
     h3 {
         margin: 0;
@@ -93,8 +148,10 @@ export const TextLink = styled.a`
     color: #8dd1ff;
     font-weight: 700;
     text-decoration: none;
+    transition: box-shadow 0.18s ease, text-shadow 0.18s ease;
 
     &:hover {
-        color: #ffffff;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+        text-shadow: 0 0 12px rgba(141, 209, 255, 0.76);
     }
 `;

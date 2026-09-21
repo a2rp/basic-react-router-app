@@ -1,4 +1,4 @@
-import { FiArrowUpRight, FiCompass, FiLayers, FiMenu } from "react-icons/fi";
+import { FiArrowRight, FiArrowUpRight, FiCheckCircle, FiCompass, FiLayers, FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import {
     BodyText,
@@ -27,8 +27,20 @@ const Home = () => (
             </TextLink>
         </header>
 
-        <Surface>
-            <SectionTitle>What this starter includes</SectionTitle>
+        <Surface className="featureSurface">
+            <div className="featureHeader">
+                <div className="featureCopy">
+                    <SectionTitle>What this starter includes</SectionTitle>
+                    <BodyText>
+                        A small foundation for building clear, responsive pages with a route for every important state.
+                    </BodyText>
+                </div>
+                <img
+                    className="featureImage"
+                    src={`${import.meta.env.BASE_URL}router-pattern.jpg`}
+                    alt="Abstract blue architecture representing connected application routes"
+                />
+            </div>
             <CardGrid>
                 <Card>
                     <FiCompass aria-hidden="true" size={22} color="#7dc4ff" />
@@ -49,6 +61,12 @@ const Home = () => (
             <BodyText>
                 Use this project as a clean base for learning navigation patterns before connecting it to a larger API or feature set.
             </BodyText>
+            <div className="starterLinks">
+                <TextLink as={Link} to="/contact">
+                    Start with the contact page <FiArrowRight aria-hidden="true" />
+                </TextLink>
+                <span><FiCheckCircle aria-hidden="true" /> Keyboard-friendly by default</span>
+            </div>
         </Surface>
     </Page>
 );

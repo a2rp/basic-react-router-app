@@ -2,18 +2,30 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const NavigationLink = styled(NavLink)`
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 9px 13px;
     border-radius: 9px;
     color: #aebed1;
     font-size: 0.92rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.18s ease, color 0.18s ease;
+    transition: box-shadow 0.18s ease, text-shadow 0.18s ease;
 
-    &:hover,
+    &:hover {
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+        text-shadow: 0 0 12px rgba(141, 209, 255, 0.76);
+    }
+
     &.active {
         background: #132d46;
         color: #ffffff;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
     }
 `;
 
@@ -25,6 +37,11 @@ export const Styled = {
         border-bottom: 1px solid rgba(122, 175, 219, 0.18);
         background: rgba(7, 17, 31, 0.86);
         backdrop-filter: blur(16px);
+        transition: transform 220ms ease;
+
+        &.hidden {
+            transform: translateY(-100%);
+        }
     `,
 
     Inner: styled.div`
@@ -58,9 +75,13 @@ export const Styled = {
         border: 1px solid #3d85bc;
         border-radius: 10px;
         background: linear-gradient(145deg, #173c5b, #0c1d30);
-        color: #8dd1ff;
-        font-size: 0.78rem;
-        letter-spacing: 0.04em;
+        background: #07111f;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     `,
 
     DesktopNav: styled.nav`
@@ -84,6 +105,12 @@ export const Styled = {
         border-radius: 10px;
         background: #10253a;
         color: #e7edf7;
+        transition: box-shadow 0.18s ease, text-shadow 0.18s ease;
+
+        &:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            text-shadow: 0 0 12px rgba(141, 209, 255, 0.76);
+        }
 
         @media (max-width: 720px) {
             display: grid;

@@ -4,9 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
-// BrowserRouter keeps each page address in sync with the browser URL.
-// Local Vite development stays at /, while the production build uses the GitHub Pages repository path.
-const routerBaseName = import.meta.env.DEV ? "/" : import.meta.env.BASE_URL;
+// BrowserRouter and Vite use the same repository base path in local and production builds.
+const routerBaseName = import.meta.env.BASE_URL;
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>

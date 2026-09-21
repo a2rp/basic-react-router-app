@@ -1,106 +1,73 @@
 # Basic React Router App
 
-A modern, responsive React Router starter that demonstrates browser-based routing, lazy-loaded pages, accessible navigation, and a clean static site layout.
+A practical React Router starter that demonstrates clear route-based navigation, lazy-loaded pages, accessible controls, and a responsive static frontend layout.
+
+![Basic React Router App screenshot](screenshot.png)
 
 ## Features
 
-- BrowserRouter with route-based URLs
-- Lazy-loaded page modules with a Suspense loader
-- `Suspense` key based on the current route
-- Fixed responsive header
-- Accessible mobile navigation drawer with Escape-key support
-- Home, About, Contact, Privacy, Terms, and Not Found pages
-- Scroll reset on every route change
-- Responsive footer with working legal routes
-- Page metadata for browser and social previews
-- Clear code comments around routing, loading, and navigation behavior
+- BrowserRouter routes for home, about, contact, legal pages, and not found states
+- Lazy-loaded pages with a Suspense loading state
+- Fixed header with scroll-aware visibility and a mobile navigation drawer
+- Route scroll reset, keyboard support, focus states, and GitHub Pages fallback
+- Local favicon, logo, social preview, and feature image assets
 
-## Tech stack
+## Tech Stack
 
 - React 18
 - React Router DOM
 - Vite
 - styled-components
-- react-icons
+- React Icons
 
-## Install and run
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-For a production build:
+Open the repository base path shown by Vite, usually `/basic-react-router-app/`.
+
+Production checks and deployment:
 
 ```bash
+npm run lint
 npm run build
-```
-
-## GitHub Pages deployment
-
-The deployment scripts publish the built `dist` folder to the `gh-pages` branch.
-
-```bash
+npm run preview
 npm run deploy
 ```
 
-`predeploy` builds the app and copies `index.html` to `404.html`. This lets BrowserRouter render direct GitHub Pages visits such as `/basic-react-router-app/about`.
+## Future Prospects
 
-## Routes
+- Add more reusable route examples and nested layouts
+- Add small form and data-fetching demos
+- Add theme preferences and richer page transitions
 
-| Path | Page |
-| --- | --- |
-| `/` | Home |
-| `/about` | About the project |
-| `/contact` | Contact links |
-| `/privacy-policy` | Privacy policy |
-| `/terms-of-service` | Terms of service |
-| Any other path | Not Found |
+## Images
 
-## Routing behavior
+- `screenshot.png` - current home-screen screenshot
+- `public/router-pattern.jpg` - local feature panel image
+- `public/preview.png` - social sharing preview
+- `public/logo.png` - application logo
+- `public/favicon.ico` - browser favicon
 
-The app uses `BrowserRouter`. Vite uses the repository base path for GitHub Pages, while local development stays at `/`. The [public/_redirects](./public/_redirects) rule also supports Netlify deployments.
+## License
 
-Each page is imported only when its route is requested. While it loads, the app displays a small accessible loading indicator.
-
-## Project structure
-
-```text
-src/
-  appRoutes/       Lazy-loaded route definitions
-  components/      Header, footer, loader, layout, and shared page styles
-  pages/           Route-level page content
-  App.jsx          Application shell
-  main.jsx         BrowserRouter entry point
-```
-
-## Notes
-
-- This is a static frontend demo. It has no database, authentication, analytics integration, or contact-form submission.
-- The Contact page uses direct email and portfolio links only.
-
-## Author
-
-**Ashish Ranjan**
-
-Full-Stack Web Developer
+MIT License
 
 ## Links
 
-- Portfolio: [ashishranjan.net](https://www.ashishranjan.net/)
-- GitHub: [github.com/a2rp](https://github.com/a2rp)
-- CodePen: [codepen.io/ash1198](https://codepen.io/ash1198)
-- LinkedIn: [linkedin.com/in/aashishranjan](https://www.linkedin.com/in/aashishranjan)
-- Facebook: [facebook.com/theash.ashish](https://www.facebook.com/theash.ashish/)
-- YouTube: [Ashish Ranjan](https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1)
+- Portfolio: [https://www.ashishranjan.net/](https://www.ashishranjan.net/)
+- GitHub: [https://github.com/a2rp](https://github.com/a2rp)
+- CodePen: [https://codepen.io/ash1198](https://codepen.io/ash1198)
+- LinkedIn: [https://www.linkedin.com/in/aashishranjan](https://www.linkedin.com/in/aashishranjan)
+- Facebook: [https://www.facebook.com/theash.ashish/](https://www.facebook.com/theash.ashish/)
+- YouTube: [https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1](https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1)
 - Email: [ash.ranjan09@gmail.com](mailto:ash.ranjan09@gmail.com)
 
 ## Support
 
-- [Support page](https://a2rp-donation-page.netlify.app/)
-- [Buy Me a Coffee](https://buymeacoffee.com/a2rp)
-- [Patreon](https://www.patreon.com/a2rp)
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](./LICENSE).
+- Support: [https://a2rp-donation-page.netlify.app/](https://a2rp-donation-page.netlify.app/)
+- Buy Me A Coffee: [https://buymeacoffee.com/a2rp](https://buymeacoffee.com/a2rp)
+- Patreon: [https://patreon.com/a2rp](https://patreon.com/a2rp)
