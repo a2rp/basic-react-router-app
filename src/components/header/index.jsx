@@ -15,8 +15,10 @@ const Header = () => {
     const [isVisible, setIsVisible] = useState(true);
     const location = useLocation();
 
-    // Close the mobile drawer after navigation and when the Escape key is pressed.
+    // A route change should dismiss a drawer opened on the previous page.
     useEffect(() => {
+        // This state sync is intentional: browser history can change the route.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsMenuOpen(false);
     }, [location.pathname]);
 

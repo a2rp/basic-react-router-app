@@ -20,7 +20,7 @@ const PrivacyPolicy = () => (
         <Surface>
             <SectionTitle>How this demo handles data</SectionTitle>
             <BodyText>
-                The application itself does not request, collect, or store personal data. When you open an external portfolio or email link, that destination&apos;s own policies apply.
+                The application does not collect or store personal data and does not use analytics. It loads its fonts from Google Fonts, so your browser requests those font files from Google. External portfolio and email destinations follow their own privacy policies.
             </BodyText>
         </Surface>
     </Page>

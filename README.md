@@ -38,6 +38,8 @@ npm run preview
 npm run deploy
 ```
 
+The deploy command creates a `404.html` fallback for GitHub Pages so direct links to nested routes keep working. It works on Windows, macOS, and Linux.
+
 ## Future Prospects
 
 - Add more reusable route examples and nested layouts
